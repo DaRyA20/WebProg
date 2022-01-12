@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebApplicationFromOnlineStore.Models.DBProductAvailability>
+@{
+    ViewBag.Title = "Наличие";
+}
+
+<h2>Наличие</h2>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Магазин</th>
+        <th>Адрес Магазина</th>
+        <th>Производитель</th>
+        <th>Модель</th>
+        <th>Количество</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Premises.PremisesName
+            </td>
+            <td>
+                @item.Premises.PremisesAdress
+            </td>
+            <td>
+                @item.Product.Manufacturer.ManufacturerName
+            </td>
+            <td>
+                @item.Product.ProductName
+            </td>
+            <td>
+                @item.ProductAvailability_ProductCount
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "EditProductAvailability", new { id = item.ProductAvailabilityId })
+            </td>
+        </tr>
+    }
+</table>

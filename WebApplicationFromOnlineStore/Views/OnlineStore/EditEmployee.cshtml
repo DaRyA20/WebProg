@@ -1,0 +1,76 @@
+﻿@model WebApplicationFromOnlineStore.Models.DBEmployee
+
+@{
+    ViewBag.Title = "EditEmployee";
+}
+
+<h2>Редактировать данные о сотруднике</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.EmployeeId)
+
+        <div class="form-group">
+            <p>Фамилия</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmployeeSurname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EmployeeSurname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>Имя</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>Отчество</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmployeePatronymic, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EmployeePatronymic, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>Дата рождения</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmployeeDate, new { htmlAttributes = new { @class = "form-control", @Value = Model.EmployeeDate.ToString("dd/MM/yyyy") } })
+                @Html.ValidationMessageFor(model => model.EmployeeDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>Должность</p>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.EmployeePositionId, ViewBag.Position as SelectList)
+                @Html.ValidationMessageFor(model => model.EmployeePositionId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>Телефон</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmployeePhone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EmployeePhone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div >
+                <input type="submit" value="Сохранить" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Вернуться к списку сотрудников", "IndexEmployee")
+</div>

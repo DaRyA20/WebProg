@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebApplicationFromOnlineStore.Models.DBEmployee>
+@{
+    ViewBag.Title = "Сотрудники";
+}
+
+<h2>Сотрудники</h2>
+
+<p>
+    @Html.ActionLink("Добавить сотрудника", "CreateEmployee")
+</p>
+<p>
+    @Html.ActionLink("Добавить должность", "CreatePosition")
+</p>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Дата Рождения</th>
+        <th>Должность</th>
+        <th>Телефон</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.EmployeeSurname
+            </td>
+            <td>
+                @item.EmployeeName
+            </td>
+            <td>
+                @item.EmployeePatronymic
+            </td>
+            <td>
+                @item.EmployeeDate.ToShortDateString()
+            </td>
+            <td>
+                @item.Position.PositionName
+            </td>
+            <td>
+                @item.EmployeePhone
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "EditEmployee", new { id = item.EmployeeId }) |
+                @Html.ActionLink("Удалить", "DeleteEmployee", new { id = item.EmployeeId })
+            </td>
+        </tr>
+    }
+</table>

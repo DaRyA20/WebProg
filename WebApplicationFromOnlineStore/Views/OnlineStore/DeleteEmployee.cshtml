@@ -1,0 +1,72 @@
+﻿@model   WebApplicationFromOnlineStore.Models.DBEmployee
+
+@{
+    ViewBag.Title = "DeleteEmployee";
+}
+
+<h2>DeleteEmployee</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DBEmployee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeSurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeePatronymic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeePatronymic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position.PositionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position.PositionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeePhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeePhone)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Вернуться к списку сотрудников", "IndexEmployee")
+        </div>
+    }
+</div>
